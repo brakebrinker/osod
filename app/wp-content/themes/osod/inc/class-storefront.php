@@ -195,6 +195,15 @@ if ( ! class_exists( 'Storefront' ) ) :
 					register_sidebar( $args + $widget_tags );
 				}
 			}
+			register_sidebar( array(
+					'name' => __( 'Телефон в шапке', '' ),
+					'id' => 'top-area',
+					'description' => __( 'Шапка', '' ),
+					'before_widget' => '',
+					'after_widget' => '',
+					'before_title' => '',
+					'after_title' => '',
+				) );
 		}
 
 		/**
@@ -213,16 +222,21 @@ if ( ! class_exists( 'Storefront' ) ) :
 
 			wp_enqueue_style( 'storefront-icons', get_template_directory_uri() . '/assets/sass/base/icons.css', '', $storefront_version );
 
+			wp_enqueue_style( 'my-fontawesome', get_template_directory_uri() . '/assets/css/font-awesome.css', '', $storefront_version );
+
+			wp_enqueue_style( 'my-iconmoon', get_template_directory_uri() . '/assets/css/iconmoon.css', '', $storefront_version );
+
 			/**
 			 * Fonts
 			 */
 			$google_fonts = apply_filters( 'storefront_google_font_families', array(
-				'source-sans-pro' => 'Source+Sans+Pro:400,300,300italic,400italic,600,700,900',
+				'open-sans' => 'Open+Sans:400,600,700',
+				'pt-serif' => 'PT+Serif',
 			) );
 
 			$query_args = array(
 				'family' => implode( '|', $google_fonts ),
-				'subset' => urlencode( 'latin,latin-ext' ),
+				'subset' => urlencode( 'cyrillic' ),
 			);
 
 			$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );

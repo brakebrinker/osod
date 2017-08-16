@@ -161,11 +161,7 @@ if ( ! function_exists( 'storefront_site_branding' ) ) {
 	 * @return void
 	 */
 	function storefront_site_branding() {
-		?>
-		<div class="site-branding">
-			<?php storefront_site_title_or_logo(); ?>
-		</div>
-		<?php
+		 storefront_site_title_or_logo();
 	}
 }
 
@@ -205,11 +201,15 @@ if ( ! function_exists( 'storefront_site_title_or_logo' ) ) {
 		} else {
 			$tag = is_home() ? 'h1' : 'div';
 
-			$html = '<' . esc_attr( $tag ) . ' class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $tag ) .'>';
+			$html = '<a href="' . esc_url( home_url( '/' ) ) . '" rel="home" class="logo">';
 
 			if ( '' !== get_bloginfo( 'description' ) ) {
-				$html .= '<p class="site-description">' . esc_html( get_bloginfo( 'description', 'display' ) ) . '</p>';
+				$html .= esc_html( get_bloginfo( 'description', 'display' ) );
 			}
+
+			$html .= '<span>' . esc_html( get_bloginfo( 'name' ) ) . '</span></a>';
+
+			
 		}
 
 		if ( ! $echo ) {
@@ -239,12 +239,12 @@ if ( ! function_exists( 'storefront_primary_navigation' ) ) {
 					)
 			);
 
-			wp_nav_menu(
+			/*wp_nav_menu(
 				array(
 					'theme_location'	=> 'handheld',
 					'container_class'	=> 'handheld-navigation',
 					)
-			);
+			);*/
 			?>
 		</nav><!-- #site-navigation -->
 		<?php
@@ -276,6 +276,22 @@ if ( ! function_exists( 'storefront_secondary_navigation' ) ) {
 	}
 }
 
+if ( ! function_exists( 'storefront_phone_number' ) ) {
+	function storefront_phone_number() {
+	?>
+		<a class="phone" href="tel:<?php echo preg_replace("/[^0-9]/", '', strip_tags(dynamic_sidebar( 'top-area' ))); ?>"><i class="icon-phone"></i> <?php dynamic_sidebar( 'top-area' ); ?></a>
+	<?php
+	}
+}
+
+if ( ! function_exists( 'storefront_boockmarks' ) ) {
+	function storefront_boockmarks() {
+	?>
+		<div class="like"><i class="fa-heart-o"></i> <span>Мои закладки</span></div>
+	<?php
+	}
+}
+
 if ( ! function_exists( 'storefront_skip_links' ) ) {
 	/**
 	 * Skip links
@@ -285,8 +301,8 @@ if ( ! function_exists( 'storefront_skip_links' ) ) {
 	 */
 	function storefront_skip_links() {
 		?>
-		<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'storefront' ); ?></a>
-		<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'storefront' ); ?></a>
+		<!--<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_attr_e( 'Skip to navigation', 'storefront' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_attr_e( 'Skip to content', 'storefront' ); ?></a>-->
 		<?php
 	}
 }
@@ -902,7 +918,7 @@ if ( ! function_exists( 'storefront_primary_navigation_wrapper' ) ) {
 	 * The primary navigation wrapper
 	 */
 	function storefront_primary_navigation_wrapper() {
-		echo '<div class="storefront-primary-navigation">';
+		/*echo '<div class="storefront-primary-navigation">';*/
 	}
 }
 
@@ -911,7 +927,7 @@ if ( ! function_exists( 'storefront_primary_navigation_wrapper_close' ) ) {
 	 * The primary navigation wrapper close
 	 */
 	function storefront_primary_navigation_wrapper_close() {
-		echo '</div>';
+		/*echo '</div>';*/
 	}
 }
 
@@ -990,3 +1006,37 @@ if ( ! function_exists( 'storefront_init_structured_data' ) ) {
 		}
 	}
 }
+
+/*My widgets*/
+class WP_Phone_Widget extends WP_Widget {
+     public function __construct() {
+           parent::__construct(
+                 'widget_phone',
+                 'Номер телефона',
+                 array( 'description' => __( 'Номер телефона', 'text_domain' ), )
+           );
+     }
+     public function update( $new_instance, $old_instance ) {
+           $instance = array();
+           $instance['title'] = strip_tags( $new_instance['title'] );
+           return $instance;
+     }
+     public function form( $instance ) {
+?>
+           <p>
+                 <label for="<?php echo $this->get_field_id( 'title' ); ?>">Телефон</label>
+                 <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" 
+                  name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" 
+                  value="<?php echo $instance['title']; ?>" />
+           </p>
+<?php
+     }
+     public function widget( $args, $instance ) {
+?>
+           <?php echo $instance[ 'title' ]; ?>
+<?php
+     }
+}
+add_action( 'widgets_init', function(){
+     register_widget( 'WP_Phone_Widget' );
+});
