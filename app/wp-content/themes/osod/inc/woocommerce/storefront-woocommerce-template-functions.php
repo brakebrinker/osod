@@ -71,7 +71,7 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
 	 */
 	function storefront_cart_link() {
 		?>
-			<div class="basket"><a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i class="icon-cart"><span class="amount"><?php echo wp_kses_data( sprintf( _n( '%d item', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span></i> <span>Корзина</span></a></div>
+			<div class="basket-link"><a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i class="icon-cart"><span class="amount"><?php echo wp_kses_data( sprintf( _n( '%d item', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span></i> <span>Корзина</span></a></div>
 		<?php
 	}
 }
