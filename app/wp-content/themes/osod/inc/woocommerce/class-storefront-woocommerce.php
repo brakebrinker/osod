@@ -185,7 +185,7 @@ if ( ! class_exists( 'Storefront_WooCommerce' ) ) :
 		 * @since 2.2.0
 		 */
 		public function change_breadcrumb_delimiter( $defaults ) {
-			$defaults['delimiter'] = '<span class="breadcrumb-separator"> / </span>';
+			$defaults['delimiter'] = '<span class="separator"> </span>';
 			return $defaults;
 		}
 

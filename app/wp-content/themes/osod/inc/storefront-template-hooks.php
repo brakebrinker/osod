@@ -35,10 +35,14 @@ add_action( 'storefront_header', 'storefront_boockmarks',                       
  * Footer
  *
  * @see  storefront_footer_widgets()
+ * @see  storefront_social()
  * @see  storefront_credit()
+ * @see  storefront_development()
  */
 add_action( 'storefront_footer', 'storefront_footer_widgets', 10 );
+add_action( 'storefront_footer', 'storefront_social',         15 );
 add_action( 'storefront_footer', 'storefront_credit',         20 );
+add_action( 'storefront_footer', 'storefront_development',    30 );
 
 /**
  * Homepage
@@ -92,7 +96,9 @@ add_action( 'storefront_post_content_before', 'storefront_post_thumbnail',      
  * @see  storefront_init_structured_data()
  * @see  storefront_display_comments()
  */
-add_action( 'storefront_page',       'storefront_page_header',          10 );
+/* my change*/
+add_action( 'storefront_content_top',       'storefront_my_page_header',          10 );
+
 add_action( 'storefront_page',       'storefront_page_content',         20 );
 add_action( 'storefront_page',       'storefront_init_structured_data', 30 );
 add_action( 'storefront_page_after', 'storefront_display_comments',     10 );

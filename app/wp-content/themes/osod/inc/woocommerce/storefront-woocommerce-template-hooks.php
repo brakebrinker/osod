@@ -66,7 +66,7 @@ add_action( 'woocommerce_after_shop_loop_item_title',      'woocommerce_show_pro
  * @see  storefront_header_cart()
  */
 add_action( 'storefront_header', 'storefront_product_search', 80 );
-add_action( 'storefront_header', 'storefront_header_cart',    60 );
+add_action( 'storefront_header', 'storefront_header_cart',    85 );
 
 /**
  * Structured Data

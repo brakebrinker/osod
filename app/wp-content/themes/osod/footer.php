@@ -9,13 +9,12 @@
 
 ?>
 
-		</div><!-- .col-full -->
-	</div><!-- #content -->
+	</main>
 
 	<?php do_action( 'storefront_before_footer' ); ?>
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="col-full">
+		<div class="col-full wrapper">
 
 			<?php
 			/**

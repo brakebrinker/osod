@@ -38,9 +38,9 @@
 			 * @hooked storefront_product_search                   - 41
 			 * @hooked storefront_primary_navigation_wrapper       - 42
 			 * @hooked storefront_primary_navigation               - 50
-			 * @hooked storefront_header_cart                      - 60
 			 * @hooked storefront_primary_navigation_wrapper_close - 68
 			 * @hooked storefront_phone_number                     - 70
+			 * * @hooked storefront_header_cart                    - 85
 			 */
 			do_action( 'storefront_header' ); ?>
 		</div>
@@ -54,13 +54,16 @@
 	 */
 	do_action( 'storefront_before_content' ); ?>
 
-	<div id="content" class="site-content" tabindex="-1">
-		<div class="col-full">
-
+	<main>
 		<?php
 		/**
 		 * Functions hooked in to storefront_content_top
 		 *
 		 * @hooked woocommerce_breadcrumb - 10
 		 */
+		?>
+		<div class="top-banner">
+		<?php 
 		do_action( 'storefront_content_top' );
+		?>
+		</div>

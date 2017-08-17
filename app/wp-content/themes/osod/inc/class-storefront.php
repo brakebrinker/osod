@@ -204,6 +204,15 @@ if ( ! class_exists( 'Storefront' ) ) :
 					'before_title' => '',
 					'after_title' => '',
 				) );
+			register_sidebar( array(
+					'name' => __( 'Социальные кнопки в футере', '' ),
+					'id' => 'footer-social',
+					'description' => __( 'Размещение социальных кнопок в футере', '' ),
+					'before_widget' => '',
+					'after_widget' => '',
+					'before_title' => '',
+					'after_title' => '',
+				) );
 		}
 
 		/**
@@ -218,7 +227,7 @@ if ( ! class_exists( 'Storefront' ) ) :
 			 * Styles
 			 */
 			wp_enqueue_style( 'storefront-style', get_template_directory_uri() . '/style.css', '', $storefront_version );
-			wp_style_add_data( 'storefront-style', 'rtl', 'replace' );
+			/*wp_style_add_data( 'storefront-style', 'rtl', 'replace' );*/
 
 			wp_enqueue_style( 'storefront-icons', get_template_directory_uri() . '/assets/sass/base/icons.css', '', $storefront_version );
 
@@ -248,6 +257,9 @@ if ( ! class_exists( 'Storefront' ) ) :
 			 */
 			wp_enqueue_script( 'storefront-navigation', get_template_directory_uri() . '/assets/js/navigation.min.js', array( 'jquery' ), '20120206', true );
 			wp_enqueue_script( 'storefront-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.min.js', array(), '20130115', true );
+			wp_enqueue_script( 'storefront-bxslider', get_template_directory_uri() . '/assets/slider/jquery.bxslider.min.js', array(), '20130115', true );
+			wp_enqueue_script( 'storefront-prefixfree', '//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js', array(), true );
+			wp_enqueue_script( 'storefront-js1', get_template_directory_uri() . '/assets/js/1.js', array(), true );
 
 			if ( is_page_template( 'template-homepage.php' ) && has_post_thumbnail() ) {
 				wp_enqueue_script( 'storefront-rgbaster', get_template_directory_uri() . '/assets/js/vendor/rgbaster.min.js', array( 'jquery' ), '1.1.0', true );

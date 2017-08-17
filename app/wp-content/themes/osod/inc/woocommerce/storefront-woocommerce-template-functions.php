@@ -71,9 +71,7 @@ if ( ! function_exists( 'storefront_cart_link' ) ) {
 	 */
 	function storefront_cart_link() {
 		?>
-			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>">
-				<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span>
-			</a>
+			<div class="basket"><a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i class="icon-cart"><span class="amount"><?php echo wp_kses_data( sprintf( _n( '%d item', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span></i> <span>Корзина</span></a></div>
 		<?php
 	}
 }
@@ -88,6 +86,7 @@ if ( ! function_exists( 'storefront_product_search' ) ) {
 	 */
 	function storefront_product_search() {
 		if ( storefront_is_woocommerce_activated() ) { ?>
+			<i class="icon-search"></i>
 			<div class="site-search">
 				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
 			</div>

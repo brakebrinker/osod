@@ -437,7 +437,7 @@ header [class^="icon-"],header [class^="fa-"]{
 	margin:0 0 15px 0;
 }
 .map{
-	background: url(../img/map.jpg) no-repeat center;
+	background: url(./assets/img/map.jpg) no-repeat center;
 	background-size:cover;
 	height:400px;
 }
@@ -445,7 +445,7 @@ header [class^="icon-"],header [class^="fa-"]{
 .top-banner{
 	text-align: center;
 	height: 200px;
-	background: url(../img/banner.jpg) no-repeat center;
+	background: url(./assets/img/banner.jpg) no-repeat center;
 	background-size:cover;
 	padding: 30px;
 	color:#fff;

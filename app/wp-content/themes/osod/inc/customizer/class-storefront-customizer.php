@@ -839,11 +839,11 @@ if ( ! class_exists( 'Storefront_Customizer' ) ) :
 			$storefront_woocommerce_styles = get_theme_mod( 'storefront_woocommerce_styles' );
 
 			if ( is_customize_preview() || ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ) || ( false === $storefront_styles && false === $storefront_woocommerce_styles ) ) {
-				wp_add_inline_style( 'storefront-style', $this->get_css() );
-				wp_add_inline_style( 'storefront-woocommerce-style', $this->get_woocommerce_css() );
+				// wp_add_inline_style( 'storefront-style', $this->get_css() );
+				// wp_add_inline_style( 'storefront-woocommerce-style', $this->get_woocommerce_css() );
 			} else {
-				wp_add_inline_style( 'storefront-style', get_theme_mod( 'storefront_styles' ) );
-				wp_add_inline_style( 'storefront-woocommerce-style', get_theme_mod( 'storefront_woocommerce_styles' ) );
+				// wp_add_inline_style( 'storefront-style', get_theme_mod( 'storefront_styles' ) );
+				// wp_add_inline_style( 'storefront-woocommerce-style', get_theme_mod( 'storefront_woocommerce_styles' ) );
 			}
 		}
 
