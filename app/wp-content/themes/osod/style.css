@@ -894,3 +894,20 @@ ul.nav-menu li {
 .wrapper .site-search {
 	display: none;
 }
+.contacts textarea {
+    height: 79px;
+}
+.contacts form input[type="submit"] {
+	display: block;
+	width: 100%;
+	border: 2px solid #b09e89;
+	background-color: #b09e89;
+	height: 50px;
+	color: #fff;
+	font-family: 'proxima nova';
+	font-size: 13px;
+	font-weight: 700px;
+	text-transform: uppercase;
+	text-align: center;
+	max-width: 100%;
+}
